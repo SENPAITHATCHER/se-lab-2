@@ -3,8 +3,6 @@ package hu.bme.mit.spaceship;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.security.InvalidParameterException;
-
 import org.junit.jupiter.api.Test;
 
 class TorpedoStoreTest {
@@ -19,8 +17,8 @@ class TorpedoStoreTest {
 
     // Assert
     assertEquals(true, result);
-    assertEquals(store.getTorpedoCount(), 0);
-    assertEquals(store.isEmpty(), true);
+    assertEquals(0, store.getTorpedoCount());
+    assertEquals(true, store.isEmpty());
   }
   @Test
   void fire_Empty(){
