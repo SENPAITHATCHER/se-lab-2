@@ -1,0 +1,2 @@
+SUCCESS
+No enum constant hu.bme.mit.spaceship.FiringMode.NONE

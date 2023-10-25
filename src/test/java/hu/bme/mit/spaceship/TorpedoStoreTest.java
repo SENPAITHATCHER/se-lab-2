@@ -1,6 +1,9 @@
 package hu.bme.mit.spaceship;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.security.InvalidParameterException;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,5 +19,22 @@ class TorpedoStoreTest {
 
     // Assert
     assertEquals(true, result);
+    assertEquals(store.getTorpedoCount(), 0);
+    assertEquals(store.isEmpty(), true);
   }
-}
+  @Test
+  void fire_Empty(){
+    TorpedoStore store = new TorpedoStore(0);
+    assertThrows(IllegalArgumentException.class, () -> store.fire(1));
+  }
+  @Test
+  void fire_Fail(){
+    TorpedoStore store = new TorpedoStore(1, 1);
+    assertEquals(false, store.fire(1));
+  }
+  @Test
+  void invalid_Count(){
+      TorpedoStore store = new TorpedoStore(1, 0);
+      assertThrows(IllegalArgumentException.class, () -> store.fire(-1));
+    }
+  }
